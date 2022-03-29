@@ -282,7 +282,7 @@ const UserRecordTable = () => {
                                     <>
                                         {editRowId === item.id
                                             ? (<EditableRow
-                                                key={uuidv4()}
+                                             
                                                 index={index}
                                                 editRowData={editRowData}
                                                 handleEditRowChange={handleEditRowChange}
@@ -292,7 +292,7 @@ const UserRecordTable = () => {
                                                 handleOnChangeCheckBox={handleOnChangeCheckBox}
                                             />)
                                             : (<ReadOnlyRow
-                                                key={uuidv4()}
+                                             
                                                 index={index}
                                                 item={item}
                                                 onEdit={onEdit}
@@ -315,7 +315,7 @@ const UserRecordTable = () => {
                                         <>
                                             {editRowId === item.id
                                                 ? (<EditableRow
-                                                    key={uuidv4()}
+                                                  
                                                     index={index}
                                                     editRowData={editRowData}
                                                     handleEditRowChange={handleEditRowChange}
@@ -325,7 +325,7 @@ const UserRecordTable = () => {
                                                     handleOnChangeCheckBox={handleOnChangeCheckBox}
                                                 />)
                                                 : (<ReadOnlyRow
-                                                    key={uuidv4()}
+                                                   
                                                     index={index}
                                                     item={item}
                                                     onEdit={onEdit}

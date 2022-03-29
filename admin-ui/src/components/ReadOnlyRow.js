@@ -1,5 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
-import { v4 as uuidv4 } from 'uuid';
+
 import { pink } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -19,7 +19,7 @@ const ReadOnlyRow = ({ index,item, onEdit, onDelete,checkedState,handleOnChangeC
     }
     
     return ( 
-            <TableRow className={toggle(checkedState[index])} key={uuidv4()}>
+            <TableRow className={toggle(checkedState[index])}>
                 <TableCell><Checkbox sx={{
                     color: pink[800],
                     '&.Mui-checked': {

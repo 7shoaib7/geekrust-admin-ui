@@ -11,7 +11,7 @@ const EditableRow = ({ index,editRowData, handleEditRowChange, handleSaveRowData
   
     return (
         <>
-            <TableRow key={uuidv4()}>
+            <TableRow >
                 <TableCell><Checkbox sx={{
                     color: pink[800],
                     '&.Mui-checked': {
@@ -21,7 +21,7 @@ const EditableRow = ({ index,editRowData, handleEditRowChange, handleSaveRowData
                 id={`custom-checkbox-${index}`}
                 checked={checkedState[index]}
                 onChange={() => handleOnChangeCheckBox(index)}
-                />{editRowData.id}</TableCell>
+                /></TableCell>
                 <TableCell>
                     <TextField  size="small" required={true} id="outlined-basic" label="Name" variant="outlined" name="name" value={editRowData.name} onChange={handleEditRowChange} />
                 </TableCell>
