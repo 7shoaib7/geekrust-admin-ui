@@ -281,8 +281,7 @@ const UserRecordTable = () => {
                                 .map((item, index) => (
                                     <>
                                         {editRowId === item.id
-                                            ? (<EditableRow
-                                             
+                                            ? (<EditableRow                                            
                                                 index={index}
                                                 editRowData={editRowData}
                                                 handleEditRowChange={handleEditRowChange}
@@ -292,7 +291,6 @@ const UserRecordTable = () => {
                                                 handleOnChangeCheckBox={handleOnChangeCheckBox}
                                             />)
                                             : (<ReadOnlyRow
-                                             
                                                 index={index}
                                                 item={item}
                                                 onEdit={onEdit}
@@ -315,7 +313,6 @@ const UserRecordTable = () => {
                                         <>
                                             {editRowId === item.id
                                                 ? (<EditableRow
-                                                  
                                                     index={index}
                                                     editRowData={editRowData}
                                                     handleEditRowChange={handleEditRowChange}
@@ -324,8 +321,7 @@ const UserRecordTable = () => {
                                                     checkedState={checkedState}
                                                     handleOnChangeCheckBox={handleOnChangeCheckBox}
                                                 />)
-                                                : (<ReadOnlyRow
-                                                   
+                                                : (<ReadOnlyRow                                                  
                                                     index={index}
                                                     item={item}
                                                     onEdit={onEdit}
