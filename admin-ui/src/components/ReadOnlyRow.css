@@ -1,0 +1,9 @@
+.row:hover{
+/* background-color:lightgray; */
+background-color:rosybrown;
+cursor: pointer;
+}
+
+.selected{
+ background-color:lightgray;
+}
