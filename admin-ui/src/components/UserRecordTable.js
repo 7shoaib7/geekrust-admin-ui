@@ -4,19 +4,19 @@ import EditableRow from './EditableRow';
 import HandleParentCheckBox from "./HanldeParentCheckBox";
 import "./UserRecordTable.css"
 import "./ReadOnlyRow.css"
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import Box from '@mui/material/Box';
 import { pink } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
 import { Table, TableHead, TableRow, TableBody, TableCell } from '@mui/material'
-import TablePagination from '@mui/material/TablePagination';
+// import TablePagination from '@mui/material/TablePagination';
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { TextField, InputAdornment, } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import notfound from "../Assets/Images/NotFound.jpg"
-
+import Pagination from "@mui/material/Pagination";
 
 /******************** UserTable Component   ********************/
 
@@ -45,20 +45,23 @@ const UserRecordTable = () => {
     );
 
 
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [page, setPage] = useState(1);
+    const [rowsPerPage] = useState(10);
+
+    // const [page, setPage] = useState(0);
+    // const [rowsPerPage, setRowsPerPage] = useState(10);
 
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
+    // const handleChangePage = (event, newPage) => {
+    //     setPage(newPage);
+    // };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
-    const emptyRows =
-        rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    // const handleChangeRowsPerPage = (event) => {
+    //     setRowsPerPage(parseInt(event.target.value, 10));
+    //     setPage(0);
+    // };
+    // const emptyRows =
+    //     rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
 
     const fetchAdminData = async () => {
@@ -81,12 +84,12 @@ const UserRecordTable = () => {
 
     /********************  Handling CheckBox and Delete Selected ********** */
     const handleOnChangeCheckBox = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) =>{
-            if(index === position){
+        const updatedCheckedState = checkedState.map((item, index) => {
+            if (index === position) {
                 return !item
             }
-            else{
-               return item
+            else {
+                return item
             }
         });
         setCheckedState(updatedCheckedState);
@@ -222,27 +225,32 @@ const UserRecordTable = () => {
     return (
         <>
             {/*********************** Search Input ********************/}
-
-            <TextField
-                style={{ margin: '20px 0 20px 0' }}
-                className="search-desktop"
-                size="small"
-                inputProps={{ style: { fontFamily: "Arial", color: "black" } }}
-                InputProps={{
-                    className: "search",
-                    endAdornment: (
-                        <InputAdornment position="end">
-                            <Search sx={{ color: pink[800] }} />
-                        </InputAdornment>
-                    ),
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
                 }}
-                placeholder="Search by name,email or role"
-                name="search"
-                value={search}
-                onChange={searchFilter}
-            // onChange={(e) => setSearch(e.target.value)}
-            />
-
+            >
+                <TextField
+                    style={{ margin: '20px 0 20px 0' }}
+                    className="search-desktop"
+                    size="small"
+                    inputProps={{ style: { fontFamily: "Arial", color: "black" } }}
+                    InputProps={{
+                        className: "search",
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <Search sx={{ color: pink[800] }} />
+                            </InputAdornment>
+                        ),
+                    }}
+                    placeholder="Search by name,email or role"
+                    name="search"
+                    value={search}
+                    onChange={searchFilter}
+                // onChange={(e) => setSearch(e.target.value)}
+                />
+            </Box>
 
             {/*********************** User Table********************/}
             <Box className="table"
@@ -265,8 +273,8 @@ const UserRecordTable = () => {
                                     setCheckedState={setCheckedState}
                                     checkedParent={checkedParent}
                                     setCheckedParent={setCheckedParent}
-                                    page={page} 
-                                    />
+                                    page={page}
+                                />
                             </TableCell>
                             <TableCell><b>Name</b></TableCell>
                             <TableCell><b>Email</b></TableCell>
@@ -277,11 +285,11 @@ const UserRecordTable = () => {
 
                     <TableBody>
                         {(search.length > 0 && filterData.length)
-                            ? filterData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            ? filterData.slice((page - 1) * rowsPerPage, page * rowsPerPage)
                                 .map((item, index) => (
                                     <>
                                         {editRowId === item.id
-                                            ? (<EditableRow                                            
+                                            ? (<EditableRow
                                                 index={index}
                                                 editRowData={editRowData}
                                                 handleEditRowChange={handleEditRowChange}
@@ -308,7 +316,7 @@ const UserRecordTable = () => {
                                 </div>
                                 )
 
-                                : data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                : data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
                                     .map((item, index) => (
                                         <>
                                             {editRowId === item.id
@@ -321,7 +329,7 @@ const UserRecordTable = () => {
                                                     checkedState={checkedState}
                                                     handleOnChangeCheckBox={handleOnChangeCheckBox}
                                                 />)
-                                                : (<ReadOnlyRow                                                  
+                                                : (<ReadOnlyRow
                                                     index={index}
                                                     item={item}
                                                     onEdit={onEdit}
@@ -332,15 +340,15 @@ const UserRecordTable = () => {
                                         </>
                                     ))
                         }
-                        {emptyRows > 0 && (
+                        {/* {emptyRows > 0 && (
                             <TableRow style={{ height: 53 * emptyRows }}>
                                 <TableCell colSpan={6} />
                             </TableRow>
-                        )}
+                        )} */}
                     </TableBody>
 
                     {/*********************** Table Pagination ********************/}
-                    <Box
+                    {/* <Box
                         sx={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -371,9 +379,39 @@ const UserRecordTable = () => {
                             showFirstButton={true}
                             showLastButton={true}
                         />
-                    </Box>
+                    </Box> */}
                 </Table>
             </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: 5,
+                }}>
+                <Pagination
+                    page={page}
+                    onChange={(e, value) => setPage(value)}
+                    count={Math.ceil(data.length / rowsPerPage)}
+                    color="secondary"
+
+                    shape="rounded"
+                    showFirstButton
+                    showLastButton
+                    size="medium"
+                    defaultPage={1}
+                />
+            </Box>
+            {checkedState.some(item => item === true) ?
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'start',
+                        padding: 4,
+                        marginLeft: 10.5,
+                    }}>
+                    <Button variant="contained" className="button" onClick={deleteSelected} size="small" startIcon={<DeleteIcon />} color="error">Delete Selected</Button>
+                </Box>
+                : null}
         </>
 
     )
@@ -382,4 +420,3 @@ const UserRecordTable = () => {
 
 export default UserRecordTable
 
-// {checkedState.some(item => item === true) ? <Button variant="contained" className="button" onClick={deleteSelected} size="small" startIcon={<DeleteIcon />} color="error" style={{ position: 'absolute', right: '75%', top: '130%' }}>Delete Selected</Button> : null}
