@@ -1,8 +1,5 @@
-GeekTrust_Admin_Ui
 
-Created with ReactJs(MUI)
-
-All Geektrust challenges are meant to be solved offline.
+# GeekTrust_Admin_Ui
 
 The challenge
 
