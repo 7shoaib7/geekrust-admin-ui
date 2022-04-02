@@ -48,20 +48,6 @@ const UserRecordTable = () => {
     const [page, setPage] = useState(1);
     const [rowsPerPage] = useState(10);
 
-    // const [page, setPage] = useState(0);
-    // const [rowsPerPage, setRowsPerPage] = useState(10);
-
-
-    // const handleChangePage = (event, newPage) => {
-    //     setPage(newPage);
-    // };
-
-    // const handleChangeRowsPerPage = (event) => {
-    //     setRowsPerPage(parseInt(event.target.value, 10));
-    //     setPage(0);
-    // };
-    // const emptyRows =
-    //     rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
 
     const fetchAdminData = async () => {
@@ -340,46 +326,8 @@ const UserRecordTable = () => {
                                         </>
                                     ))
                         }
-                        {/* {emptyRows > 0 && (
-                            <TableRow style={{ height: 53 * emptyRows }}>
-                                <TableCell colSpan={6} />
-                            </TableRow>
-                        )} */}
-                    </TableBody>
 
-                    {/*********************** Table Pagination ********************/}
-                    {/* <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            width:'100%'
-                        }}
-                    >
-                        {checkedState.some(item => item === true) ? <Button variant="contained" className="button" onClick={deleteSelected} size="small" startIcon={<DeleteIcon />} color="error">Delete Selected</Button> : null}
-                        <TablePagination
-                            sx={{
-                                marginTop: 5,
-                                position: 'relative',
-                                left: 250
-                            }}
-                            component="div"
-                            rowsPerPageOptions={[10, 15, 25]}
-                            count={data.length}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            rowsPerPage={rowsPerPage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                            labelRowsPerPage={<span>Rows:</span>}
-                            labelDisplayedRows={({ page }) => {
-                                return `Page : ${page + 1}`
-                            }}
-                            backIconButtonProps={{ color: 'secondary' }}
-                            nextIconButtonProps={{ color: 'secondary' }}
-                            showFirstButton={true}
-                            showLastButton={true}
-                        />
-                    </Box> */}
+                    </TableBody>
                 </Table>
             </Box>
             <Box
@@ -420,3 +368,57 @@ const UserRecordTable = () => {
 
 export default UserRecordTable
 
+// const [page, setPage] = useState(0);
+// const [rowsPerPage, setRowsPerPage] = useState(10);
+
+
+// const handleChangePage = (event, newPage) => {
+//     setPage(newPage);
+// };
+
+// const handleChangeRowsPerPage = (event) => {
+//     setRowsPerPage(parseInt(event.target.value, 10));
+//     setPage(0);
+// };
+// const emptyRows =
+//     rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
+{/*********************** Table Pagination ********************/ }
+{/* <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            width:'100%'
+                        }}
+                    >
+                        {checkedState.some(item => item === true) ? <Button variant="contained" className="button" onClick={deleteSelected} size="small" startIcon={<DeleteIcon />} color="error">Delete Selected</Button> : null}
+                        <TablePagination
+                            sx={{
+                                marginTop: 5,
+                                position: 'relative',
+                                left: 250
+                            }}
+                            component="div"
+                            rowsPerPageOptions={[10, 15, 25]}
+                            count={data.length}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            rowsPerPage={rowsPerPage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                            labelRowsPerPage={<span>Rows:</span>}
+                            labelDisplayedRows={({ page }) => {
+                                return `Page : ${page + 1}`
+                            }}
+                            backIconButtonProps={{ color: 'secondary' }}
+                            nextIconButtonProps={{ color: 'secondary' }}
+                            showFirstButton={true}
+                            showLastButton={true}
+                        />
+                    </Box> */}
+
+{/* {emptyRows > 0 && (
+                            <TableRow style={{ height: 53 * emptyRows }}>
+                                <TableCell colSpan={6} />
+                            </TableRow>
+                        )} */}
