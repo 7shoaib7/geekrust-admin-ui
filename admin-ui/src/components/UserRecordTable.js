@@ -109,9 +109,9 @@ const UserRecordTable = () => {
     const searchFilter = (e) => {
         setSearch(e.target.value)
         const filter = data.filter((item) =>
-            item.name.toLowerCase().indexOf(e.target.value) > -1 ||
-            item.email.toLowerCase().indexOf(e.target.value) > -1 ||
-            item.role.toLowerCase().indexOf(e.target.value) > -1
+            item.name.indexOf(e.target.value) > -1 ||
+            item.email.indexOf(e.target.value) > -1 ||
+            item.role.indexOf(e.target.value) > -1
         )
 
 
